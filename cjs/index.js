@@ -1,4 +1,4 @@
-//CommonJs require module
+// CommonJs require module
 const { sum } = require('./sum').default
 
-console.log(sum(2, 3));
+console.log(sum(2, 3))

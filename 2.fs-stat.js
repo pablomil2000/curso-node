@@ -1,10 +1,10 @@
 const fs = require('node:fs')
 
-const stats = fs.statSync('./readme.md');
+const stats = fs.statSync('./readme.md')
 
 console.log(
-    stats.isFile(),
-    stats.isDirectory(),
-    stats.isSymbolicLink(),
-    stats.size,
-);
+  stats.isFile(),
+  stats.isDirectory(),
+  stats.isSymbolicLink(),
+  stats.size
+)

@@ -20,5 +20,8 @@
     "bugs": {
         "url": "https://github.com/pablomil2000/curso-node/issues"
     },
-    "homepage": "https://github.com/pablomil2000/curso-node#readme"
+    "homepage": "https://github.com/pablomil2000/curso-node#readme",
+    "dependencies": {
+        "picocolors": "1.0.0"
+    }
 }

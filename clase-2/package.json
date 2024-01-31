@@ -1,0 +1,34 @@
+{
+  "name": "curso-node-clase2",
+  "version": "1.0.0",
+  "description": "2º Api express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablomil2000/curso-node.git"
+  },
+  "keywords": [
+    "curso",
+    "node",
+    "nodejs",
+    "express"
+  ],
+  "author": "Pablo Martín López",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pablomil2000/curso-node/issues"
+  },
+  "homepage": "https://github.com/pablomil2000/curso-node#readme",
+  "dependencies": {
+    "picocolors": "1.0.0"
+  },
+  "devDependencies": {
+    "standard": "17.1.0"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}

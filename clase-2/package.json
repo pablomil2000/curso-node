@@ -23,10 +23,10 @@
   },
   "homepage": "https://github.com/pablomil2000/curso-node#readme",
   "dependencies": {
-    "nodemon": "^3.0.3",
     "picocolors": "1.0.0"
   },
   "devDependencies": {
+    "nodemon": "^3.0.3",
     "standard": "17.1.0"
   },
   "eslintConfig": {

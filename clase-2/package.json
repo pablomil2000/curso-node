@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev:1": "nodemon 1.http.js",
-    "dev": "nodemon 2.ruting.js"
+    "dev:2": "nodemon 2.ruting.js",
+    "dev": "nodemon 3.expres.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/pablomil2000/curso-node#readme",
   "dependencies": {
+    "express": "4.18.2",
     "picocolors": "1.0.0"
   },
   "devDependencies": {

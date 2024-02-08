@@ -4,8 +4,8 @@
   "description": "2º Api express",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon 1.http.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:1": "nodemon 1.http.js",
+    "dev": "nodemon 2.ruting.js"
   },
   "repository": {
     "type": "git",

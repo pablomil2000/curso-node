@@ -2,11 +2,12 @@
   "name": "curso-node-clase2",
   "version": "1.0.0",
   "description": "2º Api express",
-  "main": "index.js",
+  "main": "4.middleware.js",
   "scripts": {
     "dev:1": "nodemon 1.http.js",
     "dev:2": "nodemon 2.ruting.js",
-    "dev": "nodemon 3.expres.js"
+    "dev:3": "nodemon 3.express.js",
+    "dev": "nodemon 4.middleware.js"
   },
   "repository": {
     "type": "git",

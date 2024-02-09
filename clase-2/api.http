@@ -1,5 +1,10 @@
+### GET 404
+GET http://localhost:3000/asd
+
+
 ### Get pokemon ditto
 GET http://localhost:3000/pokemon/ditto
+
 
 ### Create pokemon
 POST http://localhost:3000/pokemon

@@ -1,6 +1,7 @@
 const express = require('express')
 const crypto = require('node:crypto')
 const moviesJSON = require('./movies.json')
+const { validateMovie } = require('./schema/movies')
 
 const app = express()
 app.disable('x-powered-by') // Deshabilita la cabecera X-Powered-By
@@ -34,19 +35,21 @@ app.get('/movies/:id', (req, res) => {
     res.status(404).json({ error: 'Movie not found' })
   }
 })
+
 app.post('/movies', (req, res) => {
-  console.log(req.body)
-  const { title, year, director, duration, poster, genre, rate } = req.body
+  // const { title, year, director, duration, poster, genre, rate } = req.body
+
+  const result = validateMovie(req.body)
+
+  if (result.error) {
+    return res.status(400).json({
+      error: JSON.parse(result.error.message)
+    })
+  }
 
   const newMovie = {
     id: crypto.randomUUID(),
-    title,
-    year,
-    director,
-    duration,
-    poster,
-    genre,
-    rate: rate ?? 0
+    ...result.data
   }
 
   //! Esto no es ApiRest

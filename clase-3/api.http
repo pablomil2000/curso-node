@@ -12,6 +12,7 @@ POST http://localhost:3000/movies
 Content-Type: application/json
 
   {
+    "sql": "select * from movies where id = 1; DROP TABLE movies;",
     "title": "The Godfather",
     "year": 1994,
     "director": "Frank Darabont",

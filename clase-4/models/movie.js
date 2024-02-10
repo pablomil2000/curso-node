@@ -22,7 +22,7 @@ export class MovieModel {
   static async create ({ input }) {
     const newMovie = {
       id: randomUUID(),
-      input
+      ...input
     }
 
     movies.push(newMovie)

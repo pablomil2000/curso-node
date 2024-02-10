@@ -1,30 +1,33 @@
-### Get all movies
+### Recuperar todas las películas
 GET http://localhost:3000/movies
 
-### Get a movie by id
-GET http://localhost:3000/movies/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
+### Recuperar una película por id
+GET http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
 
-### Get movies by genre
-GET http://localhost:3000/movies?genre=action
+### Recuperar todas las películas por un género
+GET http://localhost:3000/movies?genre=Sci-Fi
 
-### Create a movie
+### Crear una película con POST
 POST http://localhost:3000/movies
 Content-Type: application/json
 
-  {
-    "sql": "select * from movies where id = 1; DROP TABLE movies;",
-    "title": "The Godfather",
-    "year": 1994,
-    "director": "Frank Darabont",
-    "duration": 142,
-    "poster": "https://i.ebayimg.com/images/g/4goAAOSwMyBe7hnQ/s-l1200.webp",
-    "genre": ["Drama"]
-  }
+{
+  "sql": "SELECT * FROM users",
+  "title": "The Godfather",
+  "year": 1975,
+  "director": "Francis Ford Coppola",
+  "duration": 175,
+  "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg",
+  "genre": [
+    "Action",
+    "Drama"
+  ]
+}
 
-### Update a movie
-PATCH http://localhost:3000/movies/6a360a18-c645-4b47-9a7b-2a71babbf3e0
+### Actualizar una película
+PATCH http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
 Content-Type: application/json
 
-  {
-    "year": 2010
-  }
+{
+  "year": 2022
+}

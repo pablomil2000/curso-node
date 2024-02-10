@@ -1,7 +1,7 @@
 const express = require('express')
 const crypto = require('node:crypto')
 const moviesJSON = require('./movies.json')
-const { validateMovie } = require('./schema/movies')
+const { validateMovie, validatePartialMovie } = require('./schema/movies')
 
 const app = express()
 app.disable('x-powered-by') // Deshabilita la cabecera X-Powered-By
@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/movies', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*')
   const { genre } = req.query
 
   if (genre) {
@@ -56,6 +57,35 @@ app.post('/movies', (req, res) => {
   moviesJSON.push(newMovie)
 
   res.status(201).json(newMovie)
+})
+
+app.patch('/movies/:id', (req, res) => {
+  // -- Validamos lo que llega en el body
+  const result = validatePartialMovie(req.body)
+
+  if (result.error) {
+    return res.status(400).json({
+      error: JSON.parse(result.error.message)
+    })
+  }
+
+  // ? Existe la pelicula que queremos actualziar?
+  const { id } = req.params
+  const movieIndex = moviesJSON.findIndex((movie) => movie.id === id)
+
+  if (movieIndex === -1) {
+    return res.status(404).json({ error: 'Movie not found' })
+  }
+
+  //* Actualizacion de la pelicula
+  const updatedMovie = {
+    ...moviesJSON[movieIndex],
+    ...result.data
+  }
+  console.log(movieIndex)
+  moviesJSON[movieIndex] = updatedMovie
+
+  return res.json(updatedMovie)
 })
 
 const PORT = process.env.PORT || 3000

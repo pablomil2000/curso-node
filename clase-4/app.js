@@ -1,12 +1,17 @@
-const express = require('express')
-const crypto = require('node:crypto')
+import express, { json } from 'express'
+import { randomUUID } from 'node:crypto'
+
+import { validateMovie, validatePartialMovie } from './schema/movies.js'
+
+// Leer JSON en ESmodules
+import { createRequire } from 'node:module'
+const require = createRequire(import.meta.url)
 const moviesJSON = require('./movies.json')
-const { validateMovie, validatePartialMovie } = require('./schema/movies')
 
 const app = express()
 app.disable('x-powered-by') // Deshabilita la cabecera X-Powered-By
 
-app.use(express.json())
+app.use(json())
 
 app.get('/', (req, res) => {
   res.send('Hola Mundo')
@@ -49,7 +54,7 @@ app.post('/movies', (req, res) => {
   }
 
   const newMovie = {
-    id: crypto.randomUUID(),
+    id: randomUUID(),
     ...result.data
   }
 

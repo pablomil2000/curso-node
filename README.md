@@ -2,9 +2,9 @@
 
 ## Tecnologias usadas
 
-**Cliente:** JavaScript, Express
+**Cliente:** JavaScript, Express, JSON, HTML5, CSS3
 
-**Server:** Node
+**Server:** Node, MySQL
 
 ## Contenido del curso
 
@@ -13,6 +13,7 @@
     3º Crear Api rest
     4º MVC
     5º Coneccion MySQL
+    6º Chat en tiempo real
 
 ## Demo Clase 3
 

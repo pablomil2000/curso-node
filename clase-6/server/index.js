@@ -27,7 +27,7 @@ const db = createClient({
 //   )
 // `)
 
-io.on('connection', (socket) => {
+io.on('connection', async (socket) => {
   console.log('Usuario conectado')
 
   socket.on('disconnect', () => {
@@ -47,6 +47,21 @@ io.on('connection', (socket) => {
     }
     io.emit('chat message', data, result.lastInsertRowid.toString())
   })
+
+  if (!socket.recovered) {
+    try {
+      const result = await db.execute({
+        sql: `SELECT * FROM messages where id > :id`,
+        args: { id: socket.handshake.auth.serverOffset ?? 0 }
+      })
+
+      result.rows.forEach(row => {
+        socket.emit('chat message', row.content, row.id.toString())
+      })
+    } catch (error) {
+      console.error('Error al recuperar los mensajes', error)
+    }
+  }
 })
 
 

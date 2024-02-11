@@ -1,9 +1,9 @@
 import express, { json } from 'express'
 import { moviesRouter } from './routes/movies.js'
-import { corsMiddleware } from './middlewares/cors.js'
+// import { corsMiddleware } from './middlewares/cors.js'
 const app = express()
 app.disable('x-powered-by') // Deshabilita la cabecera X-Powered-By
-app.use(corsMiddleware)
+// app.use(corsMiddleware)
 app.use(json())
 
 app.get('/', (req, res) => {

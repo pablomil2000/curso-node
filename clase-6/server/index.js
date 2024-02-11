@@ -2,12 +2,30 @@ import express from 'express';
 import logger from 'morgan'
 import { Server } from 'socket.io'
 import { createServer } from 'node:http'
+import dotenv from 'dotenv'
+import { createClient } from '@libsql/client'
+
+dotenv.config()
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
 const server = createServer(app)
-const io = new Server(server)
+const io = new Server(server, {
+  connectionStateRecovery: {},
+})
+
+const db = createClient({
+  url: process.env.DATABASE_URL,
+  authToken: process.env.DATABASE_AUTH_TOKEN
+})
+
+// await db.execute(
+//   `CREATE TABLE IF NOT EXISTS messages (
+//     id INTEGER PRIMARY KEY AUTOINCREMENT,
+//     content TEXT
+//   )
+// `)
 
 io.on('connection', (socket) => {
   console.log('Usuario conectado')
@@ -16,8 +34,18 @@ io.on('connection', (socket) => {
     console.log('Usuario desconectado')
   })
 
-  socket.on('chat message', (data) => {
-    io.emit('chat message', data)
+  socket.on('chat message', async (data) => {
+    let result
+
+    try {
+      result = await db.execute({
+        sql: `INSERT INTO messages (content) VALUES (:content)`,
+        args: { content: data }
+      })
+    } catch (error) {
+      console.error('Error al insertar el mensaje', error)
+    }
+    io.emit('chat message', data, result.lastInsertRowid.toString())
   })
 })
 

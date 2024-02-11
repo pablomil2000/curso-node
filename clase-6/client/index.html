@@ -10,14 +10,18 @@
     import { io } from 'http://cdn.socket.io/4.3.2/socket.io.esm.min.js';
 
     // Conexion con el servidor
-    const socket = io()
+    const socket = io({
+      auth: {
+        serverOffset: 0
+      }
+    })
 
     // Elementos de la pagina
     const form = document.getElementById('form')
     const input = document.getElementById('input')
     const messages = document.getElementById('messages')
 
-    socket.on('chat message', (msg) => {
+    socket.on('chat message', (msg, serverOffset) => {
       const item = `<li>${msg}</li>`
       messages.insertAdjacentHTML('beforeend', item)
     })
@@ -27,6 +31,8 @@
       if (input.value) {
         socket.emit('chat message', input.value)
         input.value = ''
+
+        socket.auth.serverOffset = serverOffset
       }
     })
   </script>

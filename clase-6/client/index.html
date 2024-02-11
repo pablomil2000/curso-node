@@ -9,8 +9,19 @@
   <script type="module">
     import { io } from 'http://cdn.socket.io/4.3.2/socket.io.esm.min.js';
 
-
+    // Conexion con el servidor
     const socket = io()
+
+    const form = document.getElementById('form')
+    const input = document.getElementById('input')
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      if (input.value) {
+        socket.emit('chat message', input.value)
+        input.value = ''
+      }
+    })
   </script>
 
   <style>
@@ -100,7 +111,7 @@
 
 <body>
   <section id="chat">
-    <form>
+    <form id="form">
       <input type="text" name="message" id="input" placeholder="Type a messate" autocomplete="off">
       <button type="submit">Enviar</button>
     </form>

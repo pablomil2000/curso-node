@@ -6,6 +6,11 @@ export class MovieController {
     const { genre } = req.query
 
     const movies = await MovieModel.getAll({ genre })
+
+    if (!movies.length) {
+      return res.status(404).json({ message: 'Movies not found' })
+    }
+
     res.json(movies)
   }
 

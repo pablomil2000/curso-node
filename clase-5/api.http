@@ -25,12 +25,12 @@ Content-Type: application/json
 }
 
 ### Actualizar una película
-PATCH http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+PATCH http://localhost:3000/movies/6a360a18-c645-4b47-9a7b-2a71babbf3e0
 Content-Type: application/json
 
 {
-  "year": 2022
+  "patata": 2002
 }
 
 ### Borrar una película
-DELETE http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+DELETE http://localhost:3000/movies/428ca7aa-44a2-471f-9f90-8b53a5404ca6

@@ -1,5 +1,7 @@
+import { log } from 'node:console'
 import { MovieModel } from '../models/mysql/movie.js'
 import { validateMovie, validatePartialMovie } from '../schema/movies.js'
+import { randomUUID } from 'node:crypto'
 
 export class MovieController {
   static async getAll (req, res) {
@@ -17,13 +19,20 @@ export class MovieController {
   static async create (req, res) {
     const result = validateMovie(req.body)
 
+    console.log(result)
+
     if (!result.success) {
       return res.status(400).json({ error: JSON.parse(result.error.message) })
     }
 
+    result.data.id = randomUUID()
+
     const newMovie = await MovieModel.create({ input: result.data })
 
-    res.status(201).json(newMovie)
+    if (!newMovie) {
+      return res.status(500).json({ message: 'Error creating movie' })
+    }
+    res.status(201).json(result.data)
   }
 
   static async getById (req, res) {
@@ -49,24 +58,21 @@ export class MovieController {
   }
 
   static async update (req, res) {
-    // -- Validamos lo que llega en el body
     const result = validatePartialMovie(req.body)
 
-    if (result.error) {
-      return res.status(400).json({
-        error: JSON.parse(result.error.message)
-      })
+    if (!result.success) {
+      return res.status(400).json({ error: JSON.parse(result.error.message) })
     }
 
-    // ? Existe la pelicula que queremos actualziar?
-    const { id } = req.params
-
-    const movie = await MovieModel.update({ id, input: result.data })
-
-    if (!movie) {
-      return res.status(404).json({ message: 'Movie not found' })
+    try {
+      const updated = await MovieModel.update({ id: req.params.id, input: result.data })
+      if (!updated) {
+        return res.status(400).json({ message: 'Error updating movie' })
+      }
+    } catch (error) {
+      return res.status(400).json({ message: 'Error updating movie' })
     }
 
-    return res.json(movie)
+    return res.json({ message: 'update' })
   }
 }

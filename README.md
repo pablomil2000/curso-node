@@ -1,87 +1,49 @@
-# Curso Node JS![App Screenshot](https://proximahost.es/blog/wp-content/uploads/2022/12/Node.JS-1.jpg)
+<h1 align="center" id="title">Curso de node</h1>
 
-## Tecnologias usadas
+<p align="center"><img src="https://socialify.git.ci/pablomil2000/curso-node/image?language=1&amp;owner=1&amp;name=1&amp;stargazers=1&amp;theme=Light" alt="project-image"></p>
 
-**Cliente:** JavaScript, Express, JSON, HTML5, CSS3
+<p id="description">Curso de node</p>
 
-**Server:** Node, MySQL
+<h2>Project Screenshots:</h2>
 
-## Contenido del curso
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt="project-screenshot" width="100%" height="400/">
 
-    1º Fundamentos de NodeJS
-    2º Express
-    3º Crear Api rest
-    4º MVC
-    5º Coneccion MySQL
-    6º Chat en tiempo real
+  
+  
+<h2>🧐 Features</h2>
 
-## Demo Clase 3
+Here're some of the project's best features:
 
-La clase 3 cuenta con una demo en: https://api-rest-deploy-dev-pablo.4.us-1.fl0.io
+*   Api rest
+*   Node
+*   mongodb
+*   sqlite
 
-## Referencias API
+<h2>🛠️ Installation Steps:</h2>
 
-### API: https://api-rest-deploy-dev-pablo.4.us-1.fl0.io/movies
+<p>1. Ir a la clase en cuestion</p>
 
-#### Get all movies
-
-```http
-  GET /movies
+```
+cd {clase}
 ```
 
-#### Get a movie by id
+<p>2. iniciar proyecto</p>
 
-```http
-  GET /movies/${id}
+```
+npm run dev
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
+  
+  
+<h2>💻 Built with</h2>
 
-#### Get movies by genre
+Technologies used in the project:
 
-```http
-  GET /movies?genre=${id}
-```
+*   node
+*   turso
+*   mongodb
+*   sqlite
 
-| Parameter | Type   | Description                                                    |
-| :-------- | :----- | :------------------------------------------------------------- |
-| `genre`   | `enum` | **Required**. 'Action', 'Comedy', 'Drama', 'Horror', 'Romance' |
+<h2>🛡️ License:</h2>
 
-#### Create a movie
-
-```http
-  POST /movies
-```
-
-| Parameter  | Type     | Description                                                    |
-| :--------- | :------- | :------------------------------------------------------------- |
-| `title`    | `string` | **Required**                                                   |
-| `year`     | `number` | **Required**                                                   |
-| `director` | `string` | **Required**                                                   |
-| `duration` | `number` | **Required**                                                   |
-| `poster`   | `url`    | **Required**                                                   |
-| `genre`    | `enum`   | **Required**. 'Action', 'Comedy', 'Drama', 'Horror', 'Romance' |
-| `rate`     | `number` | **default**: 5. **min**: 1. **max**: 5                         |
-
-#### Update a movie
-
-```http
-  PATCH /movies/${id}
-```
-
-| Parameter  | Type     | Description                                      |
-| :--------- | :------- | :----------------------------------------------- |
-| `id`       | `string` | **Required**                                     |
-| `title`    | `string` |                                                  |
-| `year`     | `number` |                                                  |
-| `director` | `string` |                                                  |
-| `duration` | `number` |                                                  |
-| `poster`   | `url`    |                                                  |
-| `genre`    | `enum`   | 'Action', 'Comedy', 'Drama', 'Horror', 'Romance' |
-| `rate`     | `number` | **default**: 5. **min**: 1. **max**: 5           |
-
-## Licencias
-
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the MIT
